@@ -1,6 +1,6 @@
 <?php get_header();
 
-$args = array( 'post_type' => 'post', 'posts_per_page' => 6); 
+$args = array( 'post_type' => 'filmes', 'posts_per_page' => 6); 
 $args_page = array('post_type' => 'page', 'posts_per_page' => 3);
 
 ?> 

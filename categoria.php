@@ -1,30 +1,30 @@
 <?php
 
-function custom_taxonomy_genero() {
+function custom_taxonomy_categoria() {
 
   register_taxonomy(
-        'generos',
+        'categoria',
         'filmes',
         array(
-            'label' => __( 'Gênero' ),
+            'label' => __( 'Categoria' ),
             'labels' =>  array(
-                'name'              => esc_html( 'Gênero', 'taxonomy general name' ),
-                'singular_name'     => esc_html( 'Gênero', 'taxonomy singular name' ),
-                'menu_name'         => esc_html( 'Gêneros' ),
-                'all_items'         => esc_html( 'Todos Gêneros' ),
-                'edit_item'         => esc_html( 'Editar Gêneros' ),
-                'view_item'         => esc_html( 'Visualizar Gêneros' ),
-                'update_item'       => esc_html( 'Alterar Gêneros' ),
-                'add_new_item'      => esc_html( 'Adicionar Gêneros' ),
-                'search_items'      => esc_html( 'Procurar Gêneros' ),
-                'not_found'         => esc_html( 'Nenhum Gênero encontrado' ),
-                'add_or_remove_items'  => esc_html( 'Adicionar ou remover Gêneros'),
+                'name'              => esc_html( 'Categoria', 'taxonomy general name' ),
+                'singular_name'     => esc_html( 'Categoria', 'taxonomy singular name' ),
+                'menu_name'         => esc_html( 'Categorias' ),
+                'all_items'         => esc_html( 'Todas Categorias' ),
+                'edit_item'         => esc_html( 'Editar Categorias' ),
+                'view_item'         => esc_html( 'Visualizar Categorias' ),
+                'update_item'       => esc_html( 'Alterar Categorias' ),
+                'add_new_item'      => esc_html( 'Adicionar Categoria' ),
+                'search_items'      => esc_html( 'Procurar Categoria' ),
+                'not_found'         => esc_html( 'Nenhuma Categoria encontrada' ),
+                'add_or_remove_items'  => esc_html( 'Adicionar ou remover Categoria'),
                 'choose_from_most_used'=> esc_html( 'Mais procurados'),
                 'popular_items'        => esc_html( 'Populares'),
-                'search_items'         => esc_html( 'Procurar Gêneros' ),
+                'search_items'         => esc_html( 'Procurar Categoria' ),
                 'not_found'            => esc_html( 'Não encontrado' ),
-                'no_terms'             => esc_html( 'Nenhum Gênero' ),
-                'items_list'           => esc_html( 'Lista de Gêneros' ),
+                'no_terms'             => esc_html( 'Nenhuma Categoria' ),
+                'items_list'           => esc_html( 'Lista de Categorias' ),
                 'items_list_navigation'=> esc_html( 'Lista de navegação'),
             ),
             'hierarchical'             => true,
@@ -32,14 +32,14 @@ function custom_taxonomy_genero() {
             'show_ui'                  => true,
             'show_admin_column'        => true,
             'rewrite' => array( 
-            'slug' => 'genero', 
+            'slug' => 'categoria', 
             'with_front' => true
             ),
           )
      );
 
 }
-add_action( 'init', 'custom_taxonomy_genero', 0 );
+add_action( 'init', 'custom_taxonomy_categoria', 0 );
 /*
 #======================================Adicionando campo UF na taxonomia
 add_action('cachorro_add_form_fields', 'add_cachorro_fields', 10, 2 );
