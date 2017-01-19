@@ -10,10 +10,13 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/search.js"></script>
+  <script src="<?php echo get_template_directory_uri(); ?>/js/pagination-index.js"></script>
 
 	<?php wp_head(); ?>
 </head>
 
+<body class="customize-support">
 <div class="header">
 		<div class="col-md-6 col-md-offset-3">
 			<a href="<?php echo get_bloginfo('home'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" class="img-logo"></a>

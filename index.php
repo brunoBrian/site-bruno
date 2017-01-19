@@ -1,50 +1,42 @@
 <?php get_header();
 
-$args = array( 'post_type' => 'filmes', 'posts_per_page' => 6); 
-$args_page = array('post_type' => 'page', 'posts_per_page' => 3);
+
+$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+$args = array('post_type' => 'filmes', 'posts_per_page' => 15, 'paged' => $paged );
+query_posts($args); 
 
 ?> 
 <div class="container">
-	<div class="row-fluid">
-		<div class="span10">
-			<div class="listing">
-			<h1>Posts</h1>
-				<?php $the_query = new WP_Query( $args );
-				if ($the_query->have_posts()) :
-			       while ($the_query->have_posts()) : 
-			       	   $the_query->the_post();?>   
-					   
-					   <div id="post-<?php echo get_the_ID(); ?>" class="post">		   	
-						   <?php the_post_thumbnail(); 
-						   $categories = get_the_terms( $id, 'category' );
-						   echo $categories->name; 
-
-						   foreach ($categories as $term) {?>
-					           <a href="<?=get_term_link($term->term_id)?>" class="category"> <?=$term->name?> </a>
-					     <?php
-					       }
-			      		 ?>
-				       	   <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
-					   </div>
-					   
-			       <?php endwhile; ?>
-			     <?php endif; ?>
+	<div class="row">
+    	<div class="col-sm-9 col-md-8 col-lg-9">
+			<div class="listing">   							
+			  <?php
+				 $terms = get_terms(array(
+					'taxonomy' => 'categoria',
+					'hide-empty' => false,
+				));
+				foreach ($terms as $term) {?>
+					<article id="post-<?php echo get_the_ID(); ?>" class="post list-home">	
+		   	   			<div id="poster">
+			   	   		<?php
+			   	   			echo "<div class='title-category-home'>";
+							echo '<h2>' .$term->name. '</h2>';echo "</div>";
+							echo '<a href='.get_term_link($term->term_id, "categoria").' ><img class="img-responsive" src="' . get_template_directory_uri() . '/cat-images/'. $term->slug . '.jpg"/>';
+							echo  '</a>';
+						?>
+						</div>
+					</article>
+			<?php
+				}					
+			?>
 			</div>
+		<!--ul#menu>ul.item$*4>a{Teste $}-->
 
-			<div class="listing">
-				<h1>Páginas</h1>
-				<?php $the_query_page = new WP_Query( $args_page );
-
-				if ($the_query_page->have_posts()) :
-			       while ($the_query_page->have_posts()) : 
-			       	   $the_query_page->the_post();?>   
-
-			       	  <div id="page-<?php echo get_the_ID(); ?>" class="page">
-				       	   <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
-					   </div>
-			       <?php endwhile; ?>
-			     <?php endif; ?>
-			</div>
+		</div>
+		<div class="col-sm-3 col-md-4 col-lg-3 list-sidebar" style="background-color: red;">
+			<?php
+				dynamic_sidebar( 'barra-lateral' );
+			?>
 		</div>
 	</div>
 </div>

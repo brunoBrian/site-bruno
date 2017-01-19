@@ -6,14 +6,17 @@
 	<?php if(have_posts()): ?>
 		<?php while(have_posts()):the_post() ?>				
 				<section class="single-content">
-					<h1><?php echo the_title();?></h1>
-					<?php 
-						$hide_featured_image = get_post_meta($post->ID, 'hide_featured_image', true);
-						if(($hide_featured_image === '0') || $hide_featured_image === '') {
-							the_post_thumbnail('thumbnail-single');
-						}
-					?>
-					<p><?php the_content();?></p>
+					<div class="" id="post-<?php the_ID(); ?>" <?php post_class(); ?> >
+				
+				 	 <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail('thumbnail-list-taxonomy'); ?></a>
+				 	 <p class=""><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></p>
+				     <div class="entry-meta">
+
+				      <span class="meta-prep meta-prep-entry-date"><?php _e('Publicado em ', 'seu-template'); ?></span>
+				      <span class="entry-date"><abbr class="published" ><?php the_time( get_option( 'date_format' ) ); ?></abbr></span>
+				    </div><!– .entry-meta –>
+				    <p><?php the_content();?></p>
+
 					
 
 				</section>

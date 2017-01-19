@@ -67,7 +67,7 @@ function add_custom_metabox_filmes(){
   add_action('add_meta_boxes', 'add_custom_metabox_filmes');
 
   //Função para colocar o conteúdo dentro do box
-  function add_fields_filmes(){
+  /*function add_fields_filmes(){
     
   		global $post;
     	$duracao = get_post_meta( $post->ID, 'duracao',true );
@@ -96,7 +96,7 @@ function add_custom_metabox_filmes(){
             <input type="text" style="width: 64%;" name="direcao" value="<?php echo $direcao ?>">
           </div>
            <div class="meta-th">
-            <label for="" class="wp_row_title" style="font-weight:bold;">Lançamento</label><br>
+            <label for="" class="wp_row_title" style="font-weight:bold;">Ano de Lançamento</label><br>
             <input type="text" style="width: 64%;" name="lancamento" value="<?php echo $lancamento ?>">
           </div>
         </div>
@@ -114,5 +114,5 @@ function add_custom_metabox_filmes(){
   }
 
   add_action('save_post', 'adicionar_campos');
-
+*/
 ?>
