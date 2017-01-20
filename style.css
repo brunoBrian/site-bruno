@@ -20,7 +20,7 @@ Text Domain: temabruno
 	margin-top: 50px;
 }
 .container .row {
-	margin-top: 18px;
+	margin-top: 30px;
 }
 /* Header*/
 .header {
@@ -81,7 +81,6 @@ Text Domain: temabruno
 	}
 	 #title-films {
 		margin-top: 0px;
-		background-color: red;
 		text-align: left;
 	}
 	.listing h4 {
@@ -96,9 +95,6 @@ Text Domain: temabruno
 		font-weight: bold;
 		font-size: 13px;
 		text-decoration: none;
-	}
-	.listing .page {
-		background-color: red;
 	}
 	.listing .post {
 		display: inline-table;
@@ -169,14 +165,43 @@ Text Domain: temabruno
 		line-height: 15px;
 		margin-top: 10px;
 	}
-
+.title-serie {
+	position: absolute;
+	color: #e3f0e5;
+	background-color: #4c8460;
+	width: 50px;
+	font-size: 12px;
+	text-align: center;
+	font-weight: bold;
+	line-height: 16px;
+}
+.language-films {
+	position: absolute;
+	color: #e3f0e5;
+	background-color: #307d9c;
+	width: 15.6%;
+	font-size: 12px;
+	text-align: center;
+	line-height: 16px;
+	margin-top: -22px;
+	margin-left: 10px;
+	height: 22px;
+	padding-top: 4px;
+}
 
 .title-list-categoria {
-	color: #E0E0E0;
+	color: #FFF;
 	font-weight: bold;
 	font-family: Lucida Console;
 	margin-bottom: 45px;
-	margin-top: -20px;
+	margin-top: -11px;
+	border: 2px solid;
+	margin-left: 13px;
+	border-top: none;
+	text-align: center;
+	width: 97.3%;
+	border-left: none;
+	border-right: none;
 }
 	.title-list-categoria a img {
 		text-align: center;
@@ -242,7 +267,7 @@ span .link-author:hover {
 	font-size: 18.5px;
 	color: #ffa6a6;
 	font-weight: bold;
-	margin-top: 13px;
+	margin-top: 28px;
 	border: 1px solid;
 	border-left: none;
 	border-right: none;
@@ -415,5 +440,19 @@ span .link-author:hover {
 		.listing .list-home h2 a {
 		    font-size: 17px;
 		}
-		
+	
+	/*Category*/
+	.language-films {
+		width: 23.1%;
+		font-size: 9px;
+		margin-left: 4px;
+	}
+
+	/*Search*/
+	.result-item article .details p {
+		font-size: 7.8px;
+	}
+	.result-item article .details .title h4 {
+		font-size: 15px;
+	}
 }

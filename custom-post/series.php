@@ -1,22 +1,22 @@
 <?php
 
 // Register Custom Post Type
-function custom_post_type_filmes() {
+function custom_post_type_series() {
 
 	$labels = array(
-    'name' => _x( 'Filmes', 'filmes' ),
-    'singular_name' => _x( 'Filme', 'filme' ),
-    'add_new' => _x( 'Adicionar novo', 'filmes' ),
-    'add_new_item' => __( 'Adicionar novo Filme' ),
-    'edit_item' => __( 'Editar Filme' ),
-    'new_item' => __( 'Novo Filme' ),
-    'all_items' => __( 'Todos Filmes' ),
-    'view_item' => __( 'Ver Filme' ),
-    'search_items' => __( 'Busca de Filme' ),
-    'not_found' =>  __( 'Nenhum Filme encontrado' ),
-    'not_found_in_trash' => __( 'Filme não encontrado na lixeira' ),
+    'name' => _x( 'Séries', 'series' ),
+    'singular_name' => _x( 'Série', 'serie' ),
+    'add_new' => _x( 'Adicionar novo', 'series' ),
+    'add_new_item' => __( 'Adicionar nova série' ),
+    'edit_item' => __( 'Editar Serie' ),
+    'new_item' => __( 'Novo Serie' ),
+    'all_items' => __( 'Todas as Séries' ),
+    'view_item' => __( 'Ver Serie' ),
+    'search_items' => __( 'Busca de Série' ),
+    'not_found' =>  __( 'Nenhum Série encontrado' ),
+    'not_found_in_trash' => __( 'Série não encontrado na lixeira' ),
     'parent_item_colon' => '',
-    'menu_name' => 'Filmes'
+    'menu_name' => 'Séries'
   );
   $args = array(
     'labels' => $labels,
@@ -26,48 +26,48 @@ function custom_post_type_filmes() {
     'show_in_menu' => true,
     'query_var' => true,
     'taxonomies' => 'categoria',
-    'rewrite' => ['slug' => 'filmes'],
+    'rewrite' => ['slug' => 'series'],
     'has_archive' => true,
     'hierarchical' => false,
     'menu_position' => 11,
     'show_in_rest' => true,
-    'rest_base' => 'filme',
+    'rest_base' => 'series',
     'rest_controller_class' => 'WP_REST_Posts_Controller',
     'supports' => array( 'title', 'thumbnail', 'editor', 'custom-fields' )
   );
-  register_post_type( 'filmes', $args );
+  register_post_type( 'series', $args );
 }
-add_action( 'init', 'custom_post_type_filmes', 0 );
+add_action( 'init', 'custom_post_type_series', 0 );
 
 
 /*
 // CUSTOM FIELDS
 add_action('custom_metadata_manager_init_metadata','cursos_init_custom_fields');
 function cursos_init_custom_fields(){
-  x_add_metadata_group('metadata_group','filmes',array(
+  x_add_metadata_group('metadata_group','series',array(
     'label'=>'Dados do curso'
   ));
-  x_add_metadata_field( 'nome', 'filmes' ,array(
+  x_add_metadata_field( 'nome', 'series' ,array(
   	'label'=>'Dados do curso'
   ));
 }
 */
 
-function add_custom_metabox_filmes(){
+function add_custom_metabox_series(){
     add_meta_box(
       'wp_meta_id',
       'Descrição',
-      'add_fields_filmes',
-      'filmes',
+      'add_fields_series',
+      'series',
       'normal'
     );
   }
 
 
-  add_action('add_meta_boxes', 'add_custom_metabox_filmes');
+  add_action('add_meta_boxes', 'add_custom_metabox_series');
 
   //Função para colocar o conteúdo dentro do box
-  /*function add_fields_filmes(){
+  /*function add_fields_series(){
     
   		global $post;
     	$duracao = get_post_meta( $post->ID, 'duracao',true );

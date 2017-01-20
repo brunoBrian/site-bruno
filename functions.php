@@ -1,8 +1,11 @@
 <?php
 
 	require_once('custom-post/filmes.php');
+  require_once('custom-post/series.php');
   require_once('widgets/ultimos-filmes/ultimos-filmes.php');
   require_once('widgets/listagem-categorias/listagem-categorias.php');
+  require_once('widgets/mais-vistos/mais-vistos.php');
+  require_once('widgets/series-mais-vistas/series-mais-vistas.php');
 	require_once('taxonomies/categoria.php');
   
 
@@ -29,18 +32,17 @@ function cats_meow($glue) {
  return trim(join( $glue, $cats ));
 } // end cats_meow
 
-
+//habilitando imagem de destaque
 add_theme_support( 'post-thumbnails' );
 
+
+//Registrando Menu
 function register_menu() {
 	register_nav_menu( 'menu-principal', __( 'Menu Principal' ));
 }
-
 add_action('init', 'register_menu');
 
-
-
-
+//Definindo tamanho das thumbnails
 add_action( 'after_setup_theme', 'meu_tema_configuracoes' );
 function meu_tema_configuracoes()
 {
@@ -48,17 +50,22 @@ function meu_tema_configuracoes()
     add_image_size( 'thumbnail-list-taxonomy', 350, 250, true );
 }
 
-function wordpress_pagination() {
-      global $wp_query;
-
-      $big = 999999999;
-
-      echo paginate_links( array(
-            'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-            'format' => '?paged=%#%',
-            'current' => max( 1, get_query_var('paged') ),
-            'total' => $wp_query->max_num_pages
-      ) );
+// Pagination
+function wp_pagination($pages = '', $range = 9)
+{  
+    global $wp_query, $wp_rewrite;  
+    $wp_query->query_vars['paged'] > 1 ? $current = $wp_query->query_vars['paged'] : $current = 1;  
+    $pagination = array(  
+        'base' => @add_query_arg('page','%#%'),  
+        'format' => '',  
+        'total' => $wp_query->max_num_pages,  
+        'current' => $current,  
+        'show_all' => true,  
+        'type' => 'plain'  
+    );  
+    if ( $wp_rewrite->using_permalinks() ) $pagination['base'] = user_trailingslashit( trailingslashit( remove_query_arg( 's', get_pagenum_link( 1 ) ) ) . 'page/%#%/', 'paged' );  
+    if ( !empty($wp_query->query_vars['s']) ) $pagination['add_args'] = array( 's' => get_query_var( 's' ) );  
+    echo '<div class="wp_pagination">'.paginate_links( $pagination ).'</div>';
 }
 
 
@@ -106,4 +113,41 @@ function tornese_search_page( $query, $paged ) {
 add_action( 'wp_ajax_tornese_search', 'tornese_search_page' );
 add_action( 'wp_ajax_nopriv_tornese_search', 'tornese_search_page' );
 
-         
+
+//Os mais vistos - widget
+if ( ! function_exists( 'tp_count_post_views' ) ) {// Verifica se não existe nenhuma função com o nome tp_count_post_views
+    // Conta os views do post
+    function tp_count_post_views () { 
+        // Garante que vamos tratar apenas de posts
+        
+            // Precisamos da variável $post global para obter o ID do post
+            global $post;
+            
+            // Se a sessão daquele posts não estiver vazia
+            if ( empty( $_SESSION[ 'tp_post_counter_' . $post->ID ] ) ) {
+                
+                // Cria a sessão do posts
+                $_SESSION[ 'tp_post_counter_' . $post->ID ] = true;
+            
+                // Cria ou obtém o valor da chave para contarmos
+                $key = 'tp_post_counter';
+                $key_value = get_post_meta( $post->ID, $key, true );
+                
+                // Se a chave estiver vazia, valor será 1
+                if ( empty( $key_value ) ) { // Verifica o valor
+                    $key_value = 1;
+                    update_post_meta( $post->ID, $key, $key_value );
+                } else {
+                    // Caso contrário, o valor atual + 1
+                    $key_value += 1;
+                    update_post_meta( $post->ID, $key, $key_value );
+                } // Verifica o valor
+                
+            } // Checa a sessão
+            
+        
+        return;
+        
+    }
+    add_action( 'get_header', 'tp_count_post_views' );
+}

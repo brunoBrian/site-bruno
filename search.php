@@ -53,7 +53,7 @@ get_header();
 		<button class="btn btn-primary btn-lg center-block" id="btnsearch">Carregar mais</button>
 	</div>
 
-	<div class="col-sm-3 col-md-4 col-lg-3 list-sidebar" style="background-color: red;">
+	<div class="col-sm-3 col-md-4 col-lg-3 list-sidebar">
 			<?php
 				dynamic_sidebar( 'barra-lateral' );
 			?>

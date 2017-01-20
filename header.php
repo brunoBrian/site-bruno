@@ -45,7 +45,7 @@
       ?>
       <form action="<?php echo get_home_url(); ?>/" class="navbar-form navbar-right">
         <div class="form-group">
-          <input type="text" name= "s" class="form-control" placeholder="Insira...">
+          <input type="text" name= "s" class="form-control" placeholder="Pesquisar por Filmes e Series">
         </div>
         <button type="submit" class="btn btn-default">Pesquisar</button>
       </form>

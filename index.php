@@ -1,10 +1,5 @@
 <?php get_header();
 
-
-$paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
-$args = array('post_type' => 'filmes', 'posts_per_page' => 15, 'paged' => $paged );
-query_posts($args); 
-
 ?> 
 <div class="container">
 	<div class="row">
@@ -33,7 +28,7 @@ query_posts($args);
 		<!--ul#menu>ul.item$*4>a{Teste $}-->
 
 		</div>
-		<div class="col-sm-3 col-md-4 col-lg-3 list-sidebar" style="background-color: red;">
+		<div class="col-sm-3 col-md-4 col-lg-3 list-sidebar">
 			<?php
 				dynamic_sidebar( 'barra-lateral' );
 			?>

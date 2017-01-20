@@ -4,7 +4,7 @@ function custom_taxonomy_categoria() {
 
   register_taxonomy(
         'categoria',
-        'filmes',
+        array( 'filmes', 'series' ),
         array(
             'label' => __( 'Categoria' ),
             'labels' =>  array(

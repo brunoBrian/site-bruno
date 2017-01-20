@@ -1,52 +1,40 @@
-<?php get_header();?>
+<?php get_header(); 
 
-<?php the_post();?>
+$paged = ( get_query_var('page') ) ? get_query_var('page') : 1; $query = new WP_Query( array( 'paged' => $paged ) );
 
-<?php rewind_posts(); 
- $paged = ( get_query_var('page') ) ? get_query_var('page') : 1; $query = new WP_Query( array( 'paged' => $paged ) );
-
-$args = array('post_type' => array('filmes', 'series'), 'posts_per_page' => 4, 'paged' => $paged);
+$post_type = get_post_type();
+$args = array('post_type' => array($post_type), 'posts_per_page' => 5, 'paged' => $paged);
 $the_query = new WP_Query( $args );
+
 ?>
+
 
 <div class="container">
 	<div class="row">
 		<div class="col-sm-9 col-md-8 col-lg-9">
-			<h1 class="title-list-categoria"><?php echo single_cat_title(); ?></h1>
+			<h1 class="title-list-categoria"><?php echo post_type_archive_title(); ?></h1>
 			<div class="listing">
-				<?php 
-				if ($the_query->have_posts()) :
+			<?php if ($the_query->have_posts()) :
 					while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-						<?php $post_type = get_post_type();?>
 					    <article id="post-<?php echo get_the_ID(); ?>" class="post">	
 					   	   <div id="poster">   							
 							 <?php
-							  if( $post_type == 'filmes') :
 						        if ( has_post_thumbnail() ) { ?>
 						            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'full', array( 'class'  => 'img-responsive' ) ); ?></a>
 						        <?php
 						        } 
-						      endif; ?> 
-						      <?php
-							  if( $post_type == 'series') :
-						        if ( has_post_thumbnail() ) { ?>
-						    		<div class="title-serie">Série</div>
-						            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'full', array( 'class'  => 'img-responsive' ) ); ?></a>
-						        <?php
-						        } 
-						      endif; ?> 
+									?> 
 						   </div>
 							<div class="language-films">Dublado/Legendado</div>
 				       	   <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
 					   </article> 
 
-					<?php endwhile; wp_pagination();  
-				endif;?>
-				
+					<?php endwhile; wp_pagination(); ?> 
+
+				<?php endif; ?>  
 			</div>
 		</div>
-		
-
+				
 		<div class="col-sm-3 col-md-4 col-lg-3 list-sidebar">
 			<?php
 				dynamic_sidebar( 'barra-lateral' );
@@ -54,5 +42,7 @@ $the_query = new WP_Query( $args );
 		</div>
 	</div>
 </div>
-
+         
+        <?php get_sidebar(); ?>
+    </div>
 <?php get_footer(); ?>
