@@ -25,7 +25,7 @@ function custom_post_type_series() {
     'show_ui' => true,
     'show_in_menu' => true,
     'query_var' => true,
-    'taxonomies' => 'categoria',
+    'taxonomy' => 'categoria',
     'rewrite' => ['slug' => 'series'],
     'has_archive' => true,
     'hierarchical' => false,
@@ -52,7 +52,7 @@ function cursos_init_custom_fields(){
   ));
 }
 */
-
+/*
 function add_custom_metabox_series(){
     add_meta_box(
       'wp_meta_id',
@@ -64,7 +64,7 @@ function add_custom_metabox_series(){
   }
 
 
-  add_action('add_meta_boxes', 'add_custom_metabox_series');
+  add_action('add_meta_boxes', 'add_custom_metabox_series');*/
 
   //Função para colocar o conteúdo dentro do box
   /*function add_fields_series(){

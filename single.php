@@ -16,7 +16,7 @@
 				      <span class="entry-date"><abbr class="published" ><?php the_time( get_option( 'date_format' ) ); ?></abbr></span>
 				    </div><!– .entry-meta –>
 				    <p><?php the_content();?></p>
-
+<?php the_meta(); ?>
 					
 
 				</section>

@@ -25,7 +25,7 @@ function custom_post_type_filmes() {
     'show_ui' => true,
     'show_in_menu' => true,
     'query_var' => true,
-    'taxonomies' => 'categoria',
+    'taxonomy' => 'categoria',
     'rewrite' => ['slug' => 'filmes'],
     'has_archive' => true,
     'hierarchical' => false,
@@ -40,79 +40,34 @@ function custom_post_type_filmes() {
 add_action( 'init', 'custom_post_type_filmes', 0 );
 
 
-/*
+
 // CUSTOM FIELDS
 add_action('custom_metadata_manager_init_metadata','cursos_init_custom_fields');
 function cursos_init_custom_fields(){
   x_add_metadata_group('metadata_group','filmes',array(
     'label'=>'Dados do curso'
   ));
-  x_add_metadata_field( 'nome', 'filmes' ,array(
-  	'label'=>'Dados do curso'
+ x_add_metadata_field('Phone', 'filmes', array(
+      'group' => 'metadata_group'
+      , 'description' => '###-###-####'
+      , 'label' => 'Phone'
+      , 'display_column' => true
+  ));
+  x_add_metadata_field('Pager', 'filmes', array(
+    'group' => 'metadata_group'
+    , 'description' => '###-###-####'
+    , 'label' => 'Pager'
+    , 'display_column' => true
+  ));
+  x_add_metadata_field('Fax', 'filmes', array(
+    'group' => 'metadata_group'
+    , 'description' => '###-###-####'
+    , 'label' => 'Fax'
+    , 'display_column' => true
+    
   ));
 }
-*/
-
-function add_custom_metabox_filmes(){
-    add_meta_box(
-      'wp_meta_id',
-      'Descrição',
-      'add_fields_filmes',
-      'filmes',
-      'normal'
-    );
-  }
 
 
-  add_action('add_meta_boxes', 'add_custom_metabox_filmes');
 
-  //Função para colocar o conteúdo dentro do box
-  /*function add_fields_filmes(){
-    
-  		global $post;
-    	$duracao = get_post_meta( $post->ID, 'duracao',true );
-    	$atores = get_post_meta( $post->ID, 'atores',true );
-    	$oscar = get_post_meta( $post->ID, 'oscar',true );
-    	$lancamento = get_post_meta( $post->ID, 'lancamento',true );
-    	$direcao = get_post_meta( $post->ID, 'direcao',true );
-
-    ?>
-      <div>
-        <div class="meta-row">
-          <div class="meta-th">
-            <label for="" class="wp_row_title" style="font-weight:bold;">Duração</label><br>
-            <input type="text" style="width: 64%;" name="duracao" value="<?php echo $duracao ?>">
-          </div><br>
-          <div class="meta-th">
-            <label for="" class="wp_row_title" style="font-weight:bold;">Atores</label><br>
-            <input type="text" style="width: 64%;" name="atores" value="<?php echo $atores ?>">
-          </div><br>
-          <div class="meta-th">
-            <label for="" class="wp_row_title" style="font-weight:bold;">Oscar?</label><br>
-            <input type="text" style="width: 64%;" name="oscar" value="<?php echo $oscar ?>">
-          </div>
-           <div class="meta-th">
-            <label for="" class="wp_row_title" style="font-weight:bold;">Direção</label><br>
-            <input type="text" style="width: 64%;" name="direcao" value="<?php echo $direcao ?>">
-          </div>
-           <div class="meta-th">
-            <label for="" class="wp_row_title" style="font-weight:bold;">Ano de Lançamento</label><br>
-            <input type="text" style="width: 64%;" name="lancamento" value="<?php echo $lancamento ?>">
-          </div>
-        </div>
-      </div>
-    <?php
-  }
-
-  function adicionar_campos(){
-  	global $post;
-  	update_post_meta($post->ID, 'duracao', $_POST['duracao']);
-  	update_post_meta($post->ID, 'atores', $_POST['atores']);
-  	update_post_meta($post->ID, 'oscar', $_POST['oscar']);
-  	update_post_meta($post->ID, 'lancamento', $_POST['lancamento']);
-  	update_post_meta($post->ID, 'direcao', $_POST['direcao']);
-  }
-
-  add_action('save_post', 'adicionar_campos');
-*/
 ?>
