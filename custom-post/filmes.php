@@ -42,31 +42,123 @@ add_action( 'init', 'custom_post_type_filmes', 0 );
 
 
 // CUSTOM FIELDS
-add_action('custom_metadata_manager_init_metadata','cursos_init_custom_fields');
-function cursos_init_custom_fields(){
+add_action('custom_metadata_manager_init_metadata','filmes_init_custom_fields');
+function filmes_init_custom_fields(){
   x_add_metadata_group('metadata_group','filmes',array(
-    'label'=>'Dados do curso'
+    'label'=>'Dados do Filme'
   ));
- x_add_metadata_field('Phone', 'filmes', array(
-      'group' => 'metadata_group'
-      , 'description' => '###-###-####'
-      , 'label' => 'Phone'
-      , 'display_column' => true
+ x_add_metadata_field('tempo', 'filmes', array(
+      'group' => 'metadata_group',
+       'label' => 'Tempo',
+       'display_column' => true,
   ));
-  x_add_metadata_field('Pager', 'filmes', array(
+  x_add_metadata_field('ano_lancamento', 'filmes', array(
+    'group' => 'metadata_group',
+     //'field_type' => 'datepicker',
+      'label' => 'Data de Lançamento'
+  ));
+  x_add_metadata_field('direcao', 'filmes', array(
     'group' => 'metadata_group'
-    , 'description' => '###-###-####'
-    , 'label' => 'Pager'
-    , 'display_column' => true
-  ));
-  x_add_metadata_field('Fax', 'filmes', array(
-    'group' => 'metadata_group'
-    , 'description' => '###-###-####'
-    , 'label' => 'Fax'
+    , 'label' => 'Direção'
     , 'display_column' => true
     
   ));
+  x_add_metadata_field('pais_origem', 'filmes', array(
+    'group' => 'metadata_group'
+    , 'label' => 'País de Origem'
+    , 'display_column' => true
+    
+  ));
+  /* x_add_metadata_field( 'sponsor_image', 'filmes', array(
+      'group' => 'metadata_group',
+      'field_type' => 'upload',
+      'readonly' => true,
+      'label' => 'Upload field',
+    ) );*/
+  x_add_metadata_field('atores', 'filmes', array(
+    'group' => 'metadata_group'
+    , 'label' => 'Atores'
+    , 'display_column' => true
+    
+  ));
+  x_add_metadata_field('classificacao_etaria', 'filmes', array(
+    'group' => 'metadata_group'
+    , 'label' => 'Classificação Etária'
+    , 'display_column' => true,
+    'field_type' => 'select',
+      'values' => array(     // set possible value/options
+        'option1' => 'Livre', // key => value pair (key is stored in DB)
+        'option2' => 'Não recomendado para menores de 10 anos ',
+        'option3' => 'Não recomendado para menores de 12 anos',
+        'option4' => 'Não recomendado para menores de 14 anos',
+        'option5' => 'Não recomendado para menores de 16 anos',
+        'option6' => 'Não recomendado para menores de 18 anos',
+        'option7' => 'Especialmente recomendado para crianças e adolescentes',
+      ),
+    
+  ));
+  x_add_metadata_field('idioma', 'filmes', array(
+    'group' => 'metadata_group',
+    'label' => 'Idiomas',
+    'field_type' => 'radio',
+    'display_column' => true,
+    'values' => array(
+        'Portugues' => 'Português',
+        'Ingles' => 'Inglês',
+        'Italiano' => 'Italiano',
+        'Frances' => 'Francês',
+        'Japones' => 'Japones',
+      ),
+    
+  ));
+  x_add_metadata_field('legendas', 'filmes', array(
+    'group' => 'metadata_group',
+    'label' => 'Legendas',
+    'field_type' => 'select',
+    'display_column' => true,
+    'values' => array(
+        'Portugues' => 'Português',
+        'Ingles' => 'Inglês',
+        'Italiano' => 'Italiano',
+        'Frances' => 'Francês',
+        'Japones' => 'Japones',
+      ),
+  ));
 }
+
+function add_custom_metabox_filmes(){
+    add_meta_box(
+      'wp_meta_id',
+      'Descrição',
+      'add_fields_filmes',
+      'filmes',
+      'normal'
+    );
+  }
+
+
+  add_action('add_meta_boxes', 'add_custom_metabox_filmes');
+
+  //Função para colocar o conteúdo dentro do box
+  function add_fields_filmes(){
+    
+      global $post;
+      $duracao = get_post_meta( $post->ID, 'duracao',true );
+      $atores = get_post_meta( $post->ID, 'atores',true );
+      $oscar = get_post_meta( $post->ID, 'oscar',true );
+      $lancamento = get_post_meta( $post->ID, 'lancamento',true );
+      $direcao = get_post_meta( $post->ID, 'direcao',true );
+
+
+      
+    ?>
+      
+    <label for="nascimento">Data de nascimento:</label>
+    <input id="campododani" size="30" placeholder="dd-mm-aaaa" class="hasDatepicker">    
+    <button type="submit">ENVIAR</button>
+  
+    <?php
+  }
 
 
 

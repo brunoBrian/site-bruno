@@ -1,4 +1,9 @@
 <?php
+/*Plugin Name: Abril revista taxonomy
+Description: Plugin to create revista taxonomy
+Author: Adrian / Denis
+Version: 0.1
+*/
 
 function custom_taxonomy_categoria() {
 
@@ -91,3 +96,4 @@ function update_cachorro_meta($term_id, $tt_id){
   }
 }
 */
+

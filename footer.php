@@ -25,7 +25,19 @@
 	</div>
 </div>
 
+<script src="<?php echo get_template_directory_uri(); ?>/js/search.js"></script>
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+   $(function() {
+      // aqui colocar o nome do seletor q vai usar
+      // padrao brasileiro descomente a linha 14
+        $("#datepicker").datepicker({ dateFormat: "dd-mm-yy" }).val()
+        // padrao americano linha 16
+        //$("#datepicker").datepicker({ dateFormat: "yy-mm-dd" }).val();
+   });
+
+ </script>
 
 </body>
 </html>

@@ -2,21 +2,20 @@
 <html>
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
+  <title>CineFilmes&Series</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<!-- jQuery library -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<!-- Latest compiled JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/js/search.js"></script>
-  <script src="<?php echo get_template_directory_uri(); ?>/js/pagination-index.js"></script>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>  
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>  
+   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script> 
 
 	<?php wp_head(); ?>
 </head>
 
 <body class="customize-support">
+<div id="fb-root"></div>
 <div class="header">
 		<div class="col-md-6 col-md-offset-3">
 			<a href="<?php echo get_bloginfo('home'); ?>"><img src="<?php echo get_template_directory_uri(); ?>/images/logo.png" class="img-logo"></a>

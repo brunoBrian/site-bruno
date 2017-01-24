@@ -3,10 +3,7 @@
 <?php the_post();?>
 
 <?php rewind_posts(); 
- $paged = ( get_query_var('page') ) ? get_query_var('page') : 1; $query = new WP_Query( array( 'paged' => $paged ) );
 
-$args = array('post_type' => array('filmes', 'series'), 'posts_per_page' => 4, 'paged' => $paged);
-$the_query = new WP_Query( $args );
 ?>
 
 <div class="container">
@@ -15,8 +12,8 @@ $the_query = new WP_Query( $args );
 			<h1 class="title-list-categoria"><?php echo single_cat_title(); ?></h1>
 			<div class="listing">
 				<?php 
-				if ($the_query->have_posts()) :
-					while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+				if (have_posts()) :
+					while (have_posts() ) : the_post(); ?>
 						<?php $post_type = get_post_type();?>
 					    <article id="post-<?php echo get_the_ID(); ?>" class="post">	
 					   	   <div id="poster">   							
@@ -37,6 +34,7 @@ $the_query = new WP_Query( $args );
 						      endif; ?> 
 						   </div>
 							<div class="language-films">Dublado/Legendado</div>
+							<div class="number-visits"><?php echo getPostViews(get_the_ID()); ?></div> 
 				       	   <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
 					   </article> 
 

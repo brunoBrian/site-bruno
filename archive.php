@@ -17,7 +17,7 @@ $the_query = new WP_Query( $args );
 			<?php if ($the_query->have_posts()) :
 					while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
 					    <article id="post-<?php echo get_the_ID(); ?>" class="post">	
-					   	   <div id="poster">   							
+					   	   <div id="poster">  					
 							 <?php
 						        if ( has_post_thumbnail() ) { ?>
 						            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'full', array( 'class'  => 'img-responsive' ) ); ?></a>
@@ -26,9 +26,9 @@ $the_query = new WP_Query( $args );
 									?> 
 						   </div>
 							<div class="language-films">Dublado/Legendado</div>
+							<div class="number-visits"><?php echo getPostViews(get_the_ID()); ?></div> 
 				       	   <h2><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
 					   </article> 
-
 					<?php endwhile; wp_pagination(); ?> 
 
 				<?php endif; ?>  

@@ -19,19 +19,28 @@ get_header();
 			<h2>Resultados da Pesquisa</h2>
 			<?php $the_query_post = new WP_Query( $args_search );
 			if ( $the_query_post->have_posts() ) {
-				while ( $the_query_post->have_posts() ) {
-					$the_query_post->the_post();
-					
-					?>
+				while ( $the_query_post->have_posts() ) : $the_query_post->the_post();
+					$post_type = get_post_type();?>
+
 					<div class="result-item">
 						<article id="post-<?php echo get_the_ID(); ?>">
 							<div class="image">
 								<div class="thumbnail animation-2">
 									<?php
-							        if ( has_post_thumbnail() ) { // check if the post has a Post Thumbnail assigned to it.
-							    	?> <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'full', array( 'class'  => 'img-responsive' ) ); ?></a>
-							    	<?php
-							        } 
+							        if( $post_type == 'filmes') :
+								        if ( has_post_thumbnail() ) { ?>
+								            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'full', array( 'class'  => 'img-responsive' ) ); ?></a>
+								        <?php
+								        } 
+								      endif; ?> 
+								      <?php
+									  if( $post_type == 'series') :
+								        if ( has_post_thumbnail() ) { ?>
+								    		<div class="title-serie">Série</div>
+								            <a href="<?php the_permalink(); ?>"><?php the_post_thumbnail( 'full', array( 'class'  => 'img-responsive' ) ); ?></a>
+								        <?php
+								        } 
+								      endif; ?> 
 							    	?>
 								</div>
 							</div>
@@ -46,7 +55,7 @@ get_header();
 						</article>
 					</div>
 					<?php
-				}
+				endwhile;
 			}
 			?>
 		</div>

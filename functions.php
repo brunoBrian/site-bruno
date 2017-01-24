@@ -5,9 +5,10 @@
   require_once('widgets/ultimos-filmes/ultimos-filmes.php');
   require_once('widgets/listagem-categorias/listagem-categorias.php');
   require_once('widgets/mais-vistos/mais-vistos.php');
+  require_once('widgets/curta-facebook/curta-facebook.php');
   require_once('widgets/series-mais-vistas/series-mais-vistas.php');
-	require_once('taxonomies/categoria.php');
-  
+	require_once('taxonomia/categoria.php');
+  require_once( get_template_directory() . '/plugins/custom-metadata/custom-metadata.php' );
 
 
 function remove_admin_login_header() {
@@ -150,4 +151,27 @@ if ( ! function_exists( 'tp_count_post_views' ) ) {// Verifica se não existe ne
         
     }
     add_action( 'get_header', 'tp_count_post_views' );
+}
+
+function getPostViews($postID){
+    $count_key = '_post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        return "0 Visitas";
+    }
+    return $count.' Visitas';
+}
+function setPostViews($postID) {
+    $count_key = '_post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count==''){
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
 }

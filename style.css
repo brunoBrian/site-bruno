@@ -126,6 +126,18 @@ Text Domain: temabruno
 		text-decoration: none;
 		color: #00FF00;
 	}
+	.listing .number-visits {
+		color: #e3f0e5;
+		font-size: 10px;
+		text-align: center;
+		font-weight: bold;
+		line-height: 16px;
+		width: 147px;
+		margin-left: 0px;
+		font-family: 'Oswald', arial, serif;
+		border: 1px solid sienna;
+		background-color: #2a2727;
+	}
 .title-category-home {
 	border: 2px solid #FFF;
 	height: 27px;
@@ -184,7 +196,7 @@ Text Domain: temabruno
 	text-align: center;
 	line-height: 16px;
 	margin-top: -22px;
-	margin-left: 10px;
+	margin-left: 11px;
 	height: 22px;
 	padding-top: 4px;
 }
@@ -268,9 +280,6 @@ span .link-author:hover {
 	color: #ffa6a6;
 	font-weight: bold;
 	margin-top: 28px;
-	border: 1px solid;
-	border-left: none;
-	border-right: none;
 	line-height: 21px;
 }
 
@@ -311,14 +320,19 @@ span .link-author:hover {
 	    left: 0;
 	    top: 15px;
 	    text-align: center;
-	    width: 110px;
-	    height: 110px;
+	    height: 120px;
+	    width: 107px;
 	    overflow: hidden;
 	}
 	.result-item article .image .thumbnail {
 	    position: relative; 
 	    border: none;
 	    padding: 0px;
+	    width: 110px;
+
+	}
+	.result-item article .image .thumbnail img {
+		height: 120px;
 	}
 	.result-item article .details {
 	    width: 100%;
@@ -354,11 +368,16 @@ span .link-author:hover {
 	margin-bottom: 45px;
 
 }
-
 .listagem #btnsearch {
 	margin-top: 30px;
 	display: table-caption; 
 }
+
+/*Widget Facebook*/
+.widget-facebook {
+	margin-bottom: -45px;
+}
+
 /*Footer*/
 .footer {
 	background: rgba(0, 0, 0, 0) url("images/fundo-footer.jpg") repeat scroll 0 0;
@@ -440,6 +459,9 @@ span .link-author:hover {
 		.listing .list-home h2 a {
 		    font-size: 17px;
 		}
+		.listing .number-visits {
+			width: 87px;
+		}
 	
 	/*Category*/
 	.language-films {
@@ -449,10 +471,29 @@ span .link-author:hover {
 	}
 
 	/*Search*/
+	.result-item article .details {
+	    margin-top: -9px;
+	}
 	.result-item article .details p {
-		font-size: 7.8px;
+		font-size: 8.2px;
 	}
 	.result-item article .details .title h4 {
-		font-size: 15px;
+		font-size: 13px;
+	}
+	.result-item article .image {
+		height: 107px;
+		width: 109px;
+	}
+	.result-item article .image .thumbnail img{
+		height: 107px;
+		width: 100%;
+	}
+	.result-item article .details .conteudo {
+	    margin-top: -3px;
+	}
+
+	/*Widget Facebook*/
+	.widget-facebook {
+		margin-top: 25px;
 	}
 }
