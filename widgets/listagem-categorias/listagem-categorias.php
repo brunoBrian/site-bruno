@@ -29,7 +29,7 @@ class Widget_Lista_Categorias extends WP_Widget {
 
 	public function widget( $args, $instance ){
 		$titulo = $instance["titulo"];
-		
+		echo '<div class="scrool-widget">';
 		echo "<p class='title-list-sidebar'>$titulo</p>";
 
 		$terms = get_terms(array(
@@ -38,9 +38,12 @@ class Widget_Lista_Categorias extends WP_Widget {
 		));
 		echo '<ul>';
 		foreach ($terms as $term) {
-			echo '<li><a href='.get_term_link($term->term_id, "categoria").' >' . $term->name . '</a></li>';
+			echo '<a href='.get_term_link($term->term_id, "categoria").' >';
+			echo '<li class="itens-widgets"> <span class="glyphicon glyphicon-arrow-right aria-hidden="true"></span>'. $term->name . '</li>';
+			echo "</a>";
 		}
 		echo '</ul>';
+		echo '</div>';
 			
 	}
 	public function form( $instance ){

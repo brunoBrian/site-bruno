@@ -3,7 +3,7 @@
 $paged = ( get_query_var('page') ) ? get_query_var('page') : 1; $query = new WP_Query( array( 'paged' => $paged ) );
 
 $post_type = get_post_type();
-$args = array('post_type' => array($post_type), 'posts_per_page' => 5, 'paged' => $paged);
+$args = array('post_type' => array($post_type), 'posts_per_page' => 10, 'paged' => $paged);
 $the_query = new WP_Query( $args );
 
 ?>

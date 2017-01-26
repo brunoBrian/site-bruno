@@ -12,10 +12,10 @@
 				));
 				foreach ($terms as $term) {?>
 					<article id="post-<?php echo get_the_ID(); ?>" class="post list-home">	
+					    <?php echo "<div class='title-category-home'>";
+						echo '<h2>' .$term->name. '</h2>';echo "</div>";?>
 		   	   			<div id="poster">
 			   	   		<?php
-			   	   			echo "<div class='title-category-home'>";
-							echo '<h2>' .$term->name. '</h2>';echo "</div>";
 							echo '<a href='.get_term_link($term->term_id, "categoria").' ><img class="img-responsive" src="' . get_template_directory_uri() . '/cat-images/'. $term->slug . '.jpg"/>';
 							echo  '</a>';
 						?>
