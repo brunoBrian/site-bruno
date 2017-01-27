@@ -339,6 +339,15 @@ span .link-author:hover {
 		margin-top: 13px;
 	}
 
+.carousel {
+	width: 40%;
+	margin: auto;
+	margin-top: -214px;
+}
+.carousel-inner  .item .img-carrousel {
+    width: 727px;
+    height: 280px;
+}
 
 /*Search*/
 .result-item {
@@ -473,8 +482,15 @@ span .link-author:hover {
 
 
 
+
 /*Mobile*/
 @media screen and (max-width: 768px) {
+.header {
+	height: 97px;
+}
+	.listing {
+		margin-top: -43px;
+	}
 	.listing .post {
 		width: 26.3%;
 	}
@@ -535,5 +551,16 @@ span .link-author:hover {
 	/*Widget Facebook*/
 	.widget-facebook {
 		margin-top: 25px;
+	}
+	.carousel {
+	    width: 83%;
+	    margin-top: -6px;
+	}
+	.carousel-inner {
+	    width: 100%;
+	    height: 200px;
+	}
+	.carousel-inner .item .img-carrousel {
+	    height: 200px;
 	}
 }

@@ -1,6 +1,7 @@
 <?php get_header();
 
-?> 
+dynamic_sidebar( 'area-menu' );?> 
+
 <div class="container">
 	<div class="row">
     	<div class="col-sm-9 col-md-8 col-lg-9">

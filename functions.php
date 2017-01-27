@@ -5,6 +5,7 @@
   require_once('widgets/ultimos-filmes/ultimos-filmes.php');
   require_once('widgets/listagem-categorias/listagem-categorias.php');
   require_once('widgets/mais-vistos/mais-vistos.php');
+  require_once('widgets/slides/slides.php');
   require_once('widgets/curta-facebook/curta-facebook.php');
   require_once('widgets/series-mais-vistas/series-mais-vistas.php');
 	require_once('taxonomia/categoria.php');
